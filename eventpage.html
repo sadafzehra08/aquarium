@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical Team</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      /* background-color: #faf2f2; */
+    }
+
+    /* Header Section */
+    .header-section {
+      background-color: #18578bd8;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .header-section h1 {
+      font-size: 36px;
+      margin-top: 40px;
+    }
+
+    .header-section p {
+      margin-top: 10px;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    /* Medical Team Section */
+    .medical-team-section {
+      /* padding: 40px 20px; */
+      text-align: center;
+    }
+
+    .medical-team-section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .team-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .team-member {
+      background-color: rgb(67, 127, 155);
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      width: 280px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      /* border-radius: 50%; */
+      margin-bottom: 15px;
+    }
+
+    .team-member h3 {
+      font-size: 18px;
+      margin: 10px 0;
+      color: #333;
+    }
+
+   .team-member button {
+  background-color: #70332d;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%; /* Make the buttons take up full width of the container */
+  margin: 10px 0; /* Add consistent vertical spacing */
+}
+
+    .team-member button:hover {
+      background-color: #0c3957;
+    }
+
+    /* Toggle button style */
+    .toggle-btn {
+      background-color: #2060b4;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      font-size: 14px;
+      border-radius: 50%;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .toggle-btn:hover {
+      background-color: #174a7994;
+    }
+    .navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgb(54,145,176);
+        background: linear-gradient(90deg, rgba(54,145,176,1) 12%, rgba(86,105,209,1) 60%, rgba(0,138,255,1) 100%);    
+        z-index: 999; /* Ensure navbar appears above video */
+    }
+
+    .navcolor {
+  background-color: rgba(0, 0, 0, 0.6); /* Transparent navbar */
+  color: white;
+}
+
+    /* Available times section */
+    .available-times {
+      display: none;
+      margin-top: 10px;
+      text-align: left;
+      font-size: 14px;
+      color: #333;
+    }
+.headingevent{text-decoration: underline;
+color: #ce810e;}
+
+
+/* Modal Background */
+.w3-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4); /* Black with opacity */
+}
+
+/* Modal Content */
+.w3-modal-content {
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+}
+
+/* Close Button */
+.w3-button.w3-teal {
+  background-color: #1d9f5d;
+  border: none;
+}
+
+.w3-button.w3-red {
+  background-color: #f44336;
+  border: none;
+}
+
+.w3-button:hover {
+  opacity: 0.9;
+}
+
+  </style>
+</head>
+<body>
+
+    <!-- Transparent Navbar -->
+    <nav class="navbar navbar-expand-lg navcolor">
+      <div class="container-fluid">
+        <!-- Logo on the left -->
+        <a class="navbar-brand" href="#">Nexus Aquarium</a>
+  
+        <!-- Toggler for small screens -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <!-- Navigation links in the center -->
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active"  href="home.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="eventpage.html">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="feedback.html">Feedback</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Pages
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="gallerysec.html">Gallery</a></li>
+                <li><a class="dropdown-item" href="category.html">Category</a></li>
+              </ul>
+            </li>
+            
+          </ul>
+        </div>
+  
+        <!-- Online Booking button on the right -->
+        <div class="d-flex">
+          <a class="btn btn-primary" href="eventpage.html">Online Booking</a>
+        </div>
+        <!-- <div class="d-flex">
+          <a class="btn btn-primary" href="feedback.html">Feedback</a>
+        </div> -->
+      </div>
+    </nav>
+  <!-- Header Section -->
+  <div class="header-section">
+    <h1>    Dive Into Fun and Learning at Our Aquarium Events! 🌊🐟
+    </h1>
+    <p>
+      Discover a world of wonder and excitement with our exclusive aquarium events, perfect for visitors of all ages! Whether you're looking to learn, celebrate, or create unforgettable memories, we have something special for everyone.    </p>
+  </div>
+
+  
+  <div class="medical-team-section">
+    <h2 style="margin-top:10px">Upcoming Events🌊🐟</h2>
+    <div class="team-container">
+    
+      <div class="team-member">
+        <img src="https://images.unsplash.com/photo-1570481662006-a3a1374699e8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9scGhpbnxlbnwwfHwwfHx8MA%3D%3D" alt="Doctor">
+        <h3 class="headingevent">Dolphin Show</h3>
+        <p>A dolphin show is a captivating live event featuring trained dolphins performing entertaining and impressive tricks</p>
+        <button class="w3-button w3-hover-deep-blue w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+        <button class="toggle-btn" onclick="toggleAvailability('john')">+</button>
+        <div class="available-times" id="john">
+          <ul>
+            <li>Monday: 9 AM - 1 PM</li>
+            <li>Tuesday: 10 AM - 2 PM</li>
+            <li>Wednesday: 11 AM - 3 PM</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Doctor 2 -->
+      <div class="team-member">
+        <img src="https://media.istockphoto.com/id/641212530/photo/couple-snow-mobile-in-snow-storm.jpg?s=612x612&w=0&k=20&c=0SR_KOIYKDcSRTfWMvE3crUVRs3fty11Dq8cCONFoGo=" alt="Doctor">
+        <h3 class="headingevent">Winter Special</h3>
+        <p>Winter special events in aquariums bring festive cheer and unique marine-themed activities for all ages. </p>
+        <button class="w3-button w3-hover-deep-blue w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+        <button class="toggle-btn" onclick="toggleAvailability('jane')">+</button>
+        <div class="available-times" id="jane">
+          <ul>
+            <li>Monday: 8 AM - 12 PM</li>
+            <li>Thursday: 1 PM - 5 PM</li>
+            <li>Friday: 10 AM - 2 PM</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Doctor 3 -->
+      <div class="team-member">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyqRcC5LvpvGq4iIGD32csSSICyAfj9sbr3A&s" alt="Doctor">
+        <h3 class="headingevent">Educational Events</h3>
+        <p>Educational events in aquariums are engaging programs designed to inform visitors about marine life, ecosystems, and conservation. </p>
+        <button class="w3-button w3-hover-deep-blue w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+        <button class="toggle-btn" onclick="toggleAvailability('emily')">+</button>
+        <div class="available-times" id="emily">
+          <ul>
+            <li>Tuesday: 9 AM - 1 PM</li>
+            <li>Wednesday: 2 PM - 6 PM</li>
+            <li>Friday: 11 AM - 3 PM</li>
+          </ul>
+        </div>
+      </div>
+      <!-- Doctor 4 -->
+      <div class="team-member">
+        <img src="https://t3.ftcdn.net/jpg/10/38/62/72/360_F_1038627220_bHDe1Ylyd5dFjJGy7tD4QTFHaQYfvWgA.jpg" alt="Doctor">
+        <h3 class="headingevent">Big Fish, Little Fish</h3>
+        <p>The Big Fish, Little Fish event is a fun, family-friendly activity at aquariums, designed to explore the fascinating world of aquatic life.</p>
+        <button class="w3-button w3-hover-deep-blue w3-margin-bottom" onclick="document.getElementById('ticketModal').style.display='block'">Buy Tickets</button>
+        <button class="toggle-btn" onclick="toggleAvailability('mark')">+</button>
+        <div class="available-times" id="mark">
+          <ul>
+            <li>Monday: 10 AM - 2 PM</li>
+            <li>Thursday: 9 AM - 1 PM</li>
+            <li>Saturday: 1 PM - 4 PM</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- Ticket Modal -->
+<div id="ticketModal" class="w3-modal">
+  <div class="w3-modal-content w3-animate-top w3-card-4">
+    <header class="w3-container w3-teal w3-center w3-padding-32"> 
+      <span onclick="document.getElementById('ticketModal').style.display='none'" 
+      class="w3-button w3-teal w3-xlarge w3-display-topright">×</span>
+      <h2 class="w3-wide"><i class="fa fa-suitcase w3-margin-right"></i>Tickets</h2>
+    </header>
+    <div class="w3-container">
+      <p><label><i class="fa fa-shopping-cart"></i> Tickets, $15 for adults</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="How many?">
+      <p><label><i class="fa fa-shopping-cart"></i> Tickets, $10 for kids</label></p>
+      <input class="w3-input w3-border" type="text" placeholder="How many?">
+      <p><label><i class="fa fa-user"></i> Enter email </label></p>
+      <input class="w3-input w3-border" type="text" placeholder="Send TO">
+      <button class="w3-button w3-block w3-teal w3-padding-16 w3-section w3-right">PAY <i class="fa fa-check"></i></button>
+      <button class="w3-button w3-red w3-section" onclick="document.getElementById('ticketModal').style.display='none'">Close <i class="fa fa-remove"></i></button>
+      <p class="w3-right">Need <a href="#" class="w3-text-blue">help?</a></p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <script>
+    // JavaScript function to handle the "Book Appointment" button click
+    function bookAppointment(doctorName) {
+      alert(`You have selected to book an appointment with ${doctorName}.`);
+    }
+
+    // JavaScript function to toggle the visibility of available times
+    function toggleAvailability(doctorId) {
+      const availability = document.getElementById(doctorId);
+      availability.style.display = availability.style.display === 'block' ? 'none' : 'block';
+    }
+  </script>
+  <script>
+    // Close modal if the user clicks outside the modal
+window.onclick = function(event) {
+  var modal = document.getElementById('ticketModal');
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Function to open the ticket modal
+function openTicketModal() {
+  document.getElementById('ticketModal').style.display = "block";
+}
+
+// Function to close the ticket modal
+function closeTicketModal() {
+  document.getElementById('ticketModal').style.display = "none";
+}
+
+  </script>
+</body>
+</html>

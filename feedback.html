@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Feedback Form</title>
+   <!-- Bootstrap CSS -->
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Karma">
+   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+</head>
+<style>
+    /* Reset and Base Styles */
+/* Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, rgba(61, 70, 238, 0.8), rgba(54, 62, 204, 0.8)), 
+              url('3.jpg') no-repeat center center/cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+}
+
+/* Form Container */
+.form-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  padding: 25px 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1.5s ease-in-out;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Keyframes for Fade-In */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Feedback Form */
+.feedback-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  animation: popIn 1s ease-out;
+}
+
+/* Keyframes for Header Pop-In */
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.input-group {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  opacity: 0.8;
+  transition: color 0.3s ease;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px 15px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  outline: none;
+  transition: all 0.4s ease;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.5);
+  border: 2px solid #8f94fb;
+}
+
+.input-group input:focus + label,
+.input-group textarea:focus + label {
+  color: #8f94fb;
+  font-weight: bold;
+}
+
+/* Submit Button */
+.submit-button {
+  width: 100%;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  background: linear-gradient(45deg, #4e54c8, #8f94fb);
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  animation: buttonPulse 2s infinite;
+}
+
+.submit-button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #8f94fb, #4e54c8);
+}
+
+/* Keyframes for Button Pulse */
+@keyframes buttonPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(143, 148, 251, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(143, 148, 251, 0.8);
+  }
+}
+
+/* Textarea Animation for Resize */
+textarea {
+  resize: vertical;
+  min-height: 100px;
+  transition: height 0.3s ease;
+}
+
+textarea:focus {
+  height: 150px;
+}
+</style>
+<style>
+  /* .navbar {
+width: 100%;
+background: linear-gradient(90deg, rgba(54,145,176,1) 12%, rgba(86,105,209,1) 60%, rgba(0,138,255,1) 100%);;
+padding: 10px 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+color: #fff;
+position: fixed;
+top: 0; */
+
+.navbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgb(54,145,176);
+        background: linear-gradient(90deg, rgba(54,145,176,1) 12%, rgba(86,105,209,1) 60%, rgba(0,138,255,1) 100%);    
+        z-index: 999; /* Ensure navbar appears above video */
+    }
+
+    .navcolor {
+  background-color: rgba(0, 0, 0, 0.6); /* Transparent navbar */
+  /* color: white; */
+}
+/* .navbar .logo {
+font-size: 1.5em;
+font-weight: bold;
+}
+
+.navbar ul {
+list-style: none;
+display: flex;
+margin: auto;
+padding: 0;
+margin-left: 25%;
+}
+
+.navbar ul li {
+margin: 0 10px;
+}
+
+.navbar ul li a {
+text-decoration: none;
+color: #fff;
+transition: color 0.3s;
+}
+
+.navbar ul li a:hover {
+color: #f1c40f;
+} */
+
+</style>
+<body>
+   <!-- Navigationbar -->
+   <!-- <div class="navbar">
+    <div class="logo">Nexus Aquarium</div>
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </div> -->
+
+  <nav class="navbar navbar-expand-lg navcolor">
+    <div class="container-fluid">
+      <!-- Logo on the left -->
+      <a class="navbar-brand" href="#">Nexus Aquarium</a>
+
+      <!-- Toggler for small screens -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navigation links in the center -->
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="eventpage.html">Events</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="feedback.html">Feedback</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Pages
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="gallerysec.html">Gallery</a></li>
+              <li><a class="dropdown-item" href="category.html">Category</a></li>
+            </ul>          
+          </li>
+        </ul>
+      </div>
+
+      <!-- Online Booking button on the right -->
+      <div class="d-flex">
+        <a class="btn btn-primary" href="eventpage.html">Online Booking</a>
+      </div>
+      <!-- <div class="d-flex">
+        <a class="btn btn-primary" href="feedback.html">Feedback</a>
+      </div> -->
+    </div>
+  </nav>
+  <!-- Feedbackform -->
+  <div class="form-container">
+    <form class="feedback-form">
+      <h2>How To improve Our Service</h2>
+      <div class="input-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="input-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+      </div>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
